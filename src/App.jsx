@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "../ui/AppLayout";
 import Campaigns from "../pages/Campaigns";
 import Campaign from "../pages/Campaign";
@@ -25,7 +25,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<AppLayout />}>
-            <Route index element={<Campaigns />} />
+            <Route index element={<Navigate replace to="campaigns" />} />
+            <Route path="campaigns" element={<Campaigns />} />
             <Route path="campaigns/:campaignId" element={<Campaign />} />
             <Route
               path="campaigns/:campaignId/requests"
